@@ -32,8 +32,8 @@ def encode_categorical_columns(df, target_var=None):
     metadata_columns = []
     for col in df.select_dtypes(include=['object']).columns:
         unique_values = df[col].nunique()
-        if unique_values <= 50:
-            # If the column has 15 or fewer unique values, encode it
+        if unique_values <= 10:
+            # If the column has 10 or fewer unique values, encode it
             le = LabelEncoder()
             df[col] = le.fit_transform(df[col].astype(str))  # Convert to string in case of mixed types
             label_encoders[col] = le
